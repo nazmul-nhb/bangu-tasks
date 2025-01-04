@@ -26,5 +26,6 @@ export interface ITask {
 }
 
 export interface ITaskState {
-    tasks: ITask[]
+	tasks: ITask[];
+	filter: "all" | "completed" | "High" | "Medium" | "Low";
 }

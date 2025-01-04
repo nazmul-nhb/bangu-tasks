@@ -1,5 +1,5 @@
 import Root from "@/layouts/Root";
-import Home from "@/pages/Home";
+import Tasks from "@/pages/Tasks";
 import NotFound from "@/pages/NotFound";
 import { createBrowserRouter } from "react-router";
 
@@ -11,7 +11,7 @@ export const routes = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: <Tasks />,
 			},
 		],
 	},

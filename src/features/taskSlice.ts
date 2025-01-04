@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { generateID } from "@nazmul-nhb/id-generator";
 import type { ITaskState } from "@/types";
+import type { RootState } from "@/store";
 
 const initialState: ITaskState = {
 	tasks: [
@@ -17,12 +18,17 @@ const initialState: ITaskState = {
 			priority: "Low",
 		},
 	],
+	filter: "all",
 };
 
 const taskSlice = createSlice({
-	name: "task",
+	name: "tasks",
 	initialState,
 	reducers: {},
 });
+
+export const selectTasks = (state: RootState) => state.task.tasks;
+
+export const selectFilter = (state: RootState) => state.task.filter;
 
 export default taskSlice.reducer;

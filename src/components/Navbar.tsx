@@ -5,10 +5,10 @@ import { ToggleTheme } from "./ToggleTheme";
 
 const Navbar = () => {
 	return (
-		<nav className="flex items-center justify-between gap-2 px-8 py-2">
+		<nav className="flex items-center justify-between gap-2 px-3 sm:px-8 py-2">
 			<div className="flex items-center gap-2">
 				<SiGoogletasks className="text-red-400" size={30} />
-				<h1 className="text-red-700 text-3xl font-bold">Bangu Tasks</h1>
+				<h1 className="text-red-700 text-2xl sm:text-3xl font-bold">Bangu Tasks</h1>
 			</div>
 			<div className="flex items-center gap-3 text-">
 				<ToggleTheme />

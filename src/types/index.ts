@@ -15,3 +15,16 @@ export type ThemeProviderState = {
 	theme: Theme;
 	setTheme: (theme: Theme) => void;
 };
+
+export interface ITask {
+	id: string;
+	title: string;
+	description: string;
+	dueDate: Date;
+	isCompleted: boolean;
+	priority: "High" | "Medium" | "Low";
+}
+
+export interface ITaskState {
+    tasks: ITask[]
+}

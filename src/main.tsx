@@ -1,14 +1,17 @@
 import "./styles.css";
+import { routes } from "./routes";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
 import { RouterProvider } from "react-router";
-import { routes } from "./routes/routes";
+import { HelmetProvider } from "react-helmet-async";
+import ThemeProvider from "./providers/ThemeProvider";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<HelmetProvider>
-			<RouterProvider router={routes} />
+			<ThemeProvider defaultTheme="dark">
+				<RouterProvider router={routes} />
+			</ThemeProvider>
 		</HelmetProvider>
 	</StrictMode>
 );

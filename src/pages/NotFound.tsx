@@ -2,7 +2,7 @@ import { FiAlertCircle } from "react-icons/fi";
 
 const NotFound = () => {
 	return (
-		<section className="mb-6 mt-12 h-screen flex flex-col items-center justify-center">
+		<section className="mb-6 mt-12 h-screen flex flex-col items-center justify-center select-none">
 			<div className="relative w-20 h-20 mb-4">
 				<div className="absolute inset-0 rounded-full border-8 border-red-200 border-t-red-600 animate-spin"></div>
 				<span className="absolute inset-0 text-5xl font-black text-red-600 flex items-center justify-center animate-pulse">

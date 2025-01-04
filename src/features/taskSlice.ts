@@ -17,6 +17,18 @@ const initialState: ITaskState = {
 			isCompleted: false,
 			priority: "Low",
 		},
+		{
+			id: generateID({
+				prefix: "task",
+				length: 6,
+				separator: "-",
+			}),
+			title: "First Task",
+			description: "Create Nothing!",
+			dueDate: new Date("2025-01-18"),
+			isCompleted: false,
+			priority: "High",
+		},
 	],
 	filter: "all",
 };

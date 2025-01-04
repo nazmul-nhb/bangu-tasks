@@ -1,3 +1,4 @@
+import TaskCard from "@/components/TaskCard";
 import { selectTasks } from "@/features/taskSlice";
 import { useAppSelector } from "@/hooks/redux";
 
@@ -7,7 +8,7 @@ const Tasks = () => {
 	return (
 		<section>
 			{tasks.map((task) => (
-				<div key={task.id}>{task.title}</div>
+				<TaskCard key={task.id} task={task} />
 			))}
 		</section>
 	);

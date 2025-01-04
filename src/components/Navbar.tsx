@@ -1,6 +1,7 @@
 import { navlinks } from "@/constants/navlinks";
 import { SiGoogletasks } from "react-icons/si";
 import NavLinkItem from "./NavLinkItem";
+import { ToggleTheme } from "./ToggleTheme";
 
 const Navbar = () => {
 	return (
@@ -9,8 +10,8 @@ const Navbar = () => {
 				<SiGoogletasks className="text-red-400" size={30} />
 				<h1 className="text-red-700 text-3xl font-bold">Bangu Tasks</h1>
 			</div>
-
 			<div className="flex items-center gap-3 text-">
+				<ToggleTheme />
 				{navlinks.map(({ title, path }, index) => (
 					<NavLinkItem key={index} to={path}>
 						{title}

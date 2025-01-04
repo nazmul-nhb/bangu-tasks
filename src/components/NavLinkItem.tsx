@@ -15,7 +15,7 @@ const NavLinkItem: FC<Props> = ({ to, children, className = "" }) => {
 				`relative group font-semibold text-nowrap whitespace-nowrap transition-all duration-300 ${className} ${
 					isActive
 						? "text-red-600 hover:text-red-300 !font-bold"
-						: "text-gray-200 hover:text-red-300"
+						: "dark:text-gray-200 hover:dark:text-red-300 text-gray-800 hover:text-red-300"
 				}`
 			}
 		>

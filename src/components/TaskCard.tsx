@@ -4,12 +4,16 @@ import { Trash2 } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
 import { cn } from "@/lib/utils";
 import type { ITask } from "@/types";
+import { useAppDispatch } from "@/hooks/redux";
+import { deleteTask, toggleIsCompleted } from "@/features/taskSlice";
 
 type Props = {
 	task: ITask;
 };
 
 const TaskCard: React.FC<Props> = ({ task }) => {
+	const dispatch = useAppDispatch();
+
 	return (
 		<div className="border px-5 py-3 rounded-md">
 			<div className="flex justify-between items-center">
@@ -21,14 +25,27 @@ const TaskCard: React.FC<Props> = ({ task }) => {
 							"bg-orange-600": task.priority === "Medium",
 						})}
 					/>
-					<h2>{task.title}</h2>
+					<h2
+						className={cn("text-lg font-semibold", {
+							"text-red-600 line-through": task.isCompleted,
+						})}
+					>
+						{task.title}
+					</h2>
 				</div>
 
 				<div className="flex gap-2 items-center">
-					<Button variant="link" size="icon" className="text-red-600">
+					<Button
+						onClick={() => dispatch(deleteTask(task.id))}
+						variant="link"
+						size="icon"
+						className="text-red-600"
+					>
 						<Trash2 />
 					</Button>
-					<Checkbox />
+					<Checkbox
+						onClick={() => dispatch(toggleIsCompleted(task.id))}
+					/>
 				</div>
 			</div>
 			<p className="mt-5">{task.description}</p>

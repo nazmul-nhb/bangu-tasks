@@ -30,14 +30,4 @@ export interface ITaskState {
 	filter: "all" | "completed" | "High" | "Medium" | "Low";
 }
 
-export interface TaskData {
-	title: string;
-	description: string;
-	dueDate: Date;
-	priority: "High" | "Medium" | "Low";
-}
-
-export interface TaskAction<T> {
-	payload: T;
-	type: string;
-}
+export type TaskData = Omit<ITask, "id" | "isCompleted">;

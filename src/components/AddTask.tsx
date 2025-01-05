@@ -24,13 +24,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "./ui/calendar";
-
-interface TaskData {
-	title: string;
-	description: string;
-	dueDate: Date;
-	priority: "High" | "Medium" | "Low";
-}
+import type { TaskData } from "@/types";
+import { useAppDispatch } from "@/hooks/redux";
+import { addTask } from "@/features/taskSlice";
 
 export function AddTask() {
 	const form = useForm<TaskData>({
@@ -40,8 +36,10 @@ export function AddTask() {
 		},
 	});
 
+	const dispatch = useAppDispatch();
+
 	const onSubmit = (taskData: TaskData) => {
-		console.log(taskData);
+		dispatch(addTask(taskData));
 	};
 
 	return (

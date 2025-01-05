@@ -43,13 +43,38 @@ const taskSlice = createSlice({
 				(task) => task.id !== action.payload
 			);
 		},
+
+		updateFilter: (state, action: PayloadAction<ITaskState["filter"]>) => {
+			state.filter = action.payload;
+		},
 	},
 });
 
-export const selectTasks = (state: RootState) => state.task.tasks;
+const setFilter = (state: RootState, priority: ITask["priority"]) => {
+	return state.task.tasks.filter((task) => task.priority === priority);
+};
+
+export const selectTasks = (state: RootState) => {
+	const filter = state.task.filter;
+
+	switch (filter) {
+		case "High":
+			return setFilter(state, "High");
+
+		case "Low":
+			return setFilter(state, "Low");
+
+		case "Medium":
+			return setFilter(state, "Medium");
+
+		case "all":
+			return state.task.tasks;
+	}
+};
 
 export const selectFilter = (state: RootState) => state.task.filter;
 
-export const { addTask, toggleIsCompleted, deleteTask } = taskSlice.actions;
+export const { addTask, toggleIsCompleted, deleteTask, updateFilter } =
+	taskSlice.actions;
 
 export default taskSlice.reducer;

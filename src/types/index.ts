@@ -27,7 +27,7 @@ export interface ITask {
 
 export interface ITaskState {
 	tasks: ITask[];
-	filter: "all" | "completed" | "High" | "Medium" | "Low";
+	filter: "all" | "High" | "Medium" | "Low";
 }
 
 export type TaskData = Omit<ITask, "id" | "isCompleted">;

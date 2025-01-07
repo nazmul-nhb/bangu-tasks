@@ -31,3 +31,14 @@ export interface ITaskState {
 }
 
 export type TaskData = Omit<ITask, "id" | "isCompleted">;
+
+export interface IUser {
+	id: string;
+	name: string;
+}
+
+export type UserData = Omit<IUser, "id">;
+
+export interface IUserState {
+	users: IUser[]
+}

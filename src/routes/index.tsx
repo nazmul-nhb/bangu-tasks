@@ -2,6 +2,7 @@ import Root from "@/layouts/Root";
 import Tasks from "@/pages/Tasks";
 import NotFound from "@/pages/NotFound";
 import { createBrowserRouter } from "react-router";
+import Users from "@/pages/Users";
 
 export const routes = createBrowserRouter([
 	{
@@ -12,6 +13,10 @@ export const routes = createBrowserRouter([
 			{
 				index: true,
 				element: <Tasks />,
+			},
+			{
+				path: "/users",
+				element: <Users />,
 			},
 		],
 	},

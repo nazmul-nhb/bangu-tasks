@@ -69,6 +69,9 @@ export const selectTasks = (state: RootState) => {
 
 		case "all":
 			return state.task.tasks;
+
+		default:
+			return state.task.tasks;
 	}
 };
 

@@ -23,6 +23,7 @@ export interface ITask {
 	dueDate: Date;
 	isCompleted: boolean;
 	priority: "High" | "Medium" | "Low";
+	user: string;
 }
 
 export interface ITaskState {

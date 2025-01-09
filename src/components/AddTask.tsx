@@ -25,8 +25,9 @@ import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "./ui/calendar";
 import type { TaskData } from "@/types";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { addTask } from "@/features/taskSlice";
+import { selectUsers } from "@/features/userSlice";
 
 export function AddTask() {
 	const form = useForm<TaskData>({
@@ -35,6 +36,8 @@ export function AddTask() {
 			description: "",
 		},
 	});
+
+	const users = useAppSelector(selectUsers);
 
 	const dispatch = useAppDispatch();
 
@@ -66,7 +69,6 @@ export function AddTask() {
 									<FormControl>
 										<Input
 											placeholder="Task Title"
-											// value={field.value || ""}
 											{...field}
 										/>
 									</FormControl>
@@ -82,7 +84,6 @@ export function AddTask() {
 									<FormControl>
 										<Textarea
 											placeholder="Task Description"
-											// value={field.value || ""}
 											{...field}
 										/>
 									</FormControl>
@@ -165,6 +166,35 @@ export function AddTask() {
 											<SelectItem value="Low">
 												Low
 											</SelectItem>
+										</SelectContent>
+									</Select>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="user"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Assign A User</FormLabel>
+									<Select
+										onValueChange={field.onChange}
+										defaultValue={field.value}
+									>
+										<FormControl>
+											<SelectTrigger className="">
+												<SelectValue placeholder="Assign A User" />
+											</SelectTrigger>
+										</FormControl>
+										<SelectContent>
+											{users.map((user) => (
+												<SelectItem
+													key={user.id}
+													value={user.id}
+												>
+													{user.name}
+												</SelectItem>
+											))}
 										</SelectContent>
 									</Select>
 								</FormItem>

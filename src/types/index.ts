@@ -28,7 +28,7 @@ export interface ITask {
 
 export interface ITaskState {
 	tasks: ITask[];
-	filter: "all" | "High" | "Medium" | "Low";
+	filter: "all" | ITask["priority"];
 }
 
 export type TaskData = Omit<ITask, "id" | "isCompleted">;
@@ -41,5 +41,5 @@ export interface IUser {
 export type UserData = Omit<IUser, "id">;
 
 export interface IUserState {
-	users: IUser[]
+	users: IUser[];
 }

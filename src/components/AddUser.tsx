@@ -14,8 +14,11 @@ import { useForm } from "react-hook-form";
 import type { UserData } from "@/types";
 import { useAppDispatch } from "@/hooks/redux";
 import { addUser } from "@/features/userSlice";
+import { useState } from "react";
 
 export function AddUser() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	const form = useForm<UserData>({
 		defaultValues: {
 			name: "",
@@ -26,12 +29,15 @@ export function AddUser() {
 
 	const onSubmit = (userData: UserData) => {
 		dispatch(addUser(userData));
+		setIsOpen(false);
 	};
 
 	return (
-		<Dialog>
+		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<DialogTrigger asChild>
-				<Button variant="default">Add User</Button>
+				<Button variant="default" onClick={() => setIsOpen(true)}>
+					Add User
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>

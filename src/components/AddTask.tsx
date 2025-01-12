@@ -28,8 +28,11 @@ import type { TaskData } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { addTask } from "@/features/taskSlice";
 import { selectUsers } from "@/features/userSlice";
+import { useState } from "react";
 
 export function AddTask() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	const form = useForm<TaskData>({
 		defaultValues: {
 			title: "",
@@ -43,12 +46,15 @@ export function AddTask() {
 
 	const onSubmit = (taskData: TaskData) => {
 		dispatch(addTask(taskData));
+		setIsOpen(false);
 	};
 
 	return (
-		<Dialog>
+		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<DialogTrigger asChild>
-				<Button variant="default">Add Task</Button>
+				<Button variant="default" onClick={() => setIsOpen(true)}>
+					Add Task
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>

@@ -9,7 +9,7 @@ const Users = () => {
 	return (
 		<section className="mx-auto max-w-7xl mt-20">
 			<div className="flex items-center justify-between">
-                <h1>Tasks</h1>
+                <h1>Users</h1>
                 <AddUser/>
 			</div>
 			<div className="space-y-4 mt-4">

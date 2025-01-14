@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { generateID } from "@nazmul-nhb/id-generator";
 import type { ITask, ITaskState, TaskData } from "@/types";
 import type { RootState } from "@/store";
+import { removeUser } from "./userSlice";
 
 const initialState: ITaskState = {
 	tasks: [],
@@ -48,6 +49,11 @@ const taskSlice = createSlice({
 			state.filter = action.payload;
 		},
 	},
+	extraReducers: (builder) => {
+		builder.addCase(removeUser, (state, action) => {
+			state.tasks.forEach(task=> task.user === action.payload ? task.user = undefined : task)
+		})
+	}
 });
 
 const setFilter = (state: RootState, priority: ITask["priority"]) => {

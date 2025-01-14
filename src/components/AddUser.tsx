@@ -30,6 +30,7 @@ export function AddUser() {
 	const onSubmit = (userData: UserData) => {
 		dispatch(addUser(userData));
 		setIsOpen(false);
+		form.reset();
 	};
 
 	return (

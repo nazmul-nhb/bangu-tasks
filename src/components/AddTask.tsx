@@ -47,6 +47,7 @@ export function AddTask() {
 	const onSubmit = (taskData: TaskData) => {
 		dispatch(addTask(taskData));
 		setIsOpen(false);
+		form.reset();
 	};
 
 	return (
@@ -158,7 +159,7 @@ export function AddTask() {
 										defaultValue={field.value}
 									>
 										<FormControl>
-											<SelectTrigger className="">
+											<SelectTrigger>
 												<SelectValue placeholder="Select Task Priority" />
 											</SelectTrigger>
 										</FormControl>
@@ -188,7 +189,7 @@ export function AddTask() {
 										defaultValue={field.value}
 									>
 										<FormControl>
-											<SelectTrigger className="">
+											<SelectTrigger>
 												<SelectValue placeholder="Assign A User" />
 											</SelectTrigger>
 										</FormControl>

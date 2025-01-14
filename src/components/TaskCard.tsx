@@ -4,14 +4,19 @@ import { Trash2 } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
 import { cn } from "@/lib/utils";
 import type { ITask } from "@/types";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { deleteTask, toggleIsCompleted } from "@/features/taskSlice";
+import { selectUsers } from "@/features/userSlice";
 
 type Props = {
 	task: ITask;
 };
 
 const TaskCard: React.FC<Props> = ({ task }) => {
+	const users = useAppSelector(selectUsers);
+
+	const user = users.find((user) => user.id === task.user);
+
 	const dispatch = useAppDispatch();
 
 	return (
@@ -48,6 +53,13 @@ const TaskCard: React.FC<Props> = ({ task }) => {
 					/>
 				</div>
 			</div>
+			<h3
+				className={cn("text-base font-semibold", {
+					"text-red-600 line-through": task.isCompleted,
+				})}
+			>
+				Assigned to {user ? user.name : "None"}
+			</h3>
 			<p className="mt-5">{task.description}</p>
 		</div>
 	);

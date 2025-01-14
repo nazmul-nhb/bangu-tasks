@@ -75,6 +75,7 @@ export function AddTask() {
 									<FormLabel>Title</FormLabel>
 									<FormControl>
 										<Input
+											required
 											placeholder="Task Title"
 											{...field}
 										/>
@@ -90,6 +91,7 @@ export function AddTask() {
 									<FormLabel>Description</FormLabel>
 									<FormControl>
 										<Textarea
+											required
 											placeholder="Task Description"
 											{...field}
 										/>
@@ -133,6 +135,7 @@ export function AddTask() {
 											align="start"
 										>
 											<Calendar
+												required
 												mode="single"
 												selected={field.value}
 												onSelect={field.onChange}
@@ -155,6 +158,7 @@ export function AddTask() {
 								<FormItem>
 									<FormLabel>Priority</FormLabel>
 									<Select
+										required
 										onValueChange={field.onChange}
 										defaultValue={field.value}
 									>

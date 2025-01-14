@@ -58,6 +58,7 @@ export function AddUser() {
 									<FormLabel>Title</FormLabel>
 									<FormControl>
 										<Input
+											required
 											placeholder="User Name"
 											{...field}
 										/>
